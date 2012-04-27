@@ -1,0 +1,37 @@
+% We need to save the node
+% Every append after command might be useful to have this code
+
+\def\savelastnode{\pgfextra\edef\tmpA{\tikzlastnode}\endpgfextra}
+\def\restorelastnode{\pgfextra\edef\tikzlastnode{\tmpA}\endpgfextra}
+
+% Define box and box title style
+
+\tikzstyle{mybox} = [draw=black, fill=black!10, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[fill=black, text=white]
+\tikzstyle{club suit} = [append after command={%
+    \savelastnode node[fancytitle,rounded corners] at (\tikzlastnode.east)%
+    {$\clubsuit$}\restorelastnode }]
+\tikzstyle{title} = [append after command={%
+    \savelastnode node[fancytitle,right=10pt] at (\tikzlastnode.north west)%
+    {#1}\restorelastnode}]
+
+\vspace{10pt}
+\begin{tikzpicture}
+\node [mybox,club suit,title=Commentare i file di punti] (box){%
+    \begin{minipage}{0.90\textwidth}{\small
+	Alle volte può essere molto utile commentare il file dei punti, per inserire note utili per chi lo utilizza. Per inserire dei commenti, è sufficiente far precedere il commento da un cancelletto (\textsf{\#}). Ricordare che tutto il testo che viene inserito dopo dell'asterisco viene ignorato in fase di lettura del file. Di seguito, un esempio:
+
+	\begin{verbatim}
+		# Punto 1
+		2663.043033 7103.878682 15.892881 41.61015
+		# Punto 2, vicino alla casa verde
+		2440.105115 6868.348733 15.892260 41.613032
+		# Punto 3
+		3343.564455 6694.658217 15.884017 41.60752 #attenzione, punto impreciso!
+		# Punto 4, tra gli alberi
+		3276.763815 7082.849428 15.888147 41.605921
+	\end{verbatim}}
+    \end{minipage}
+};
+\end{tikzpicture}

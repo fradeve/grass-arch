@@ -1,0 +1,24 @@
+\begin{tabular}{ccc}
+	\toprule
+	\multicolumn{3}{c}{\textbf{attributi}}
+	\tabularnewline
+	\toprule
+	\emph{cat} & attributo~1 & attributo~2
+	\tabularnewline
+	\otoprule
+	\emph{1} & 54 & nomeA
+	\tabularnewline
+	\midrule
+	\emph{2} & 78 & nomeB
+	\tabularnewline
+	\midrule
+	\emph{3} & 12 & nomeC
+	\tabularnewline
+	\midrule
+	\emph{4} & 9 & nomeD
+	\tabularnewline
+	\midrule
+	\emph{5} & 66 & nomeE
+	\tabularnewline
+	\bottomrule
+\end{tabular}

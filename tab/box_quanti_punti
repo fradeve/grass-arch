@@ -1,0 +1,28 @@
+% We need to save the node
+% Every append after command might be useful to have this code
+
+\def\savelastnode{\pgfextra\edef\tmpA{\tikzlastnode}\endpgfextra}
+\def\restorelastnode{\pgfextra\edef\tikzlastnode{\tmpA}\endpgfextra}
+
+% Define box and box title style
+
+\tikzstyle{mybox} = [draw=black, fill=black!10, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[fill=black, text=white]
+\tikzstyle{club suit} = [append after command={%
+    \savelastnode node[fancytitle,rounded corners] at (\tikzlastnode.east)%
+    {$\clubsuit$}\restorelastnode }]
+\tikzstyle{title} = [append after command={%
+    \savelastnode node[fancytitle,right=10pt] at (\tikzlastnode.north west)%
+    {#1}\restorelastnode}]
+
+\vspace{10pt}
+\begin{tikzpicture}
+\node [mybox,club suit,title=Quanti punti?] (box){%
+    \begin{minipage}{0.90\textwidth}{\small
+	Quanti punti è necessario individuare su entrambe le mappe? Per ragioni matematiche, è indispensabile usare 3, 6 o 10 coppie di punti per la georeferenziazione dell'immagine; ovviamente, quanti più punti verranno individuati, tanto più accurata sarà la rettifica e la georeferenziazione del dato. Di default è selezionata una trasformazione di primo ordine (pulsante \textsf{1st ORDER}); alternativamente, se si sono selezionati 6 o 10 punti, è possibile selezionare una trasformazione di ordine superiore (pulsanti \textsf{2nd ORDER} e \textsf{3rd ORDER}), semplicemente facendo click sul pulsante con il nome dell'ordine.
+
+	Per mappe scansionate correttamente e con proiezione corretta si usa una trasformazione di primo ordine; per mappe distorte o con proiezione sconosciuta (ad esempio mappe storiche) si usano trasformazioni di ordine superiore.}
+    \end{minipage}
+};
+\end{tikzpicture}

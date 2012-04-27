@@ -1,0 +1,37 @@
+\newcommand\BackgroundPicA{
+	\put(140,220){{
+		\begin{tikzpicture}
+		\node[opacity=0.5]{\includegraphics[scale=5.5]{logo-book}};
+		\end{tikzpicture}
+}}}
+
+\newcommand*{\titleTH}{\begingroup
+	\raggedleft
+	\definecolor{shadecolor}{gray}{0.75}
+	\vspace*{\baselineskip}
+	\hrule \vspace*{0.5cm}
+	{\bfseries \Large \fontsize{8mm}{10mm}\selectfont Introduzione all'utilizzo di}\\[\baselineskip]
+	{\textcolor{red}{\Huge \fontsize{15mm}{17mm}\selectfont GRASS GIS}}\makebox[0in][l] {\scalebox{1}[-1]{\textcolor{shadecolor}{{\large \fontsize{8mm}{10mm}\selectfont{\textsl{ in Archeologia}}}}}}{\textcolor{red}{\large \fontsize{8mm}{10mm}\selectfont{\textsl{ in Archeologia}}}}\par
+	\vspace{10pt}
+	\AddToShipoutPicture*{\BackgroundPicA}
+	\vfill
+	\includegraphics[width=0.1\textwidth]{img/oia-logo}\par
+	\vspace{10pt}
+	{\Large O.I.A.}\par
+	{\normalsize Open Idea for Archaeology}\\
+	{\footnotesize Francesco de Virgilio and the\\grass-arch project contributors}\par
+	\vspace*{3\baselineskip}
+\endgroup}
+\thispagestyle{empty}
+\titleTH
+
+\pagebreak{}
+
+\pagenumbering{roman}~
+
+\pagebreak{}
+
+\vspace*{4cm}
+
+
+\epigraph{«Sed omnia praeclara tam difficilia, quam rara sunt.»\\ \medskip{}Tutte le cose eccellenti sono tanto difficili, quanto rare.}{\emph{Etica, De potentia intellectus seu de libertate humana, Propositio XLII, scholium}\\ \textsc{Baruch Spinoza}}

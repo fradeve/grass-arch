@@ -1,0 +1,30 @@
+\begin{tabular}{cc}
+	\toprule
+	\multicolumn{2}{c}{\textbf{geometrie}}
+	\tabularnewline
+	\toprule
+	\emph{cat} & coordinate
+	\tabularnewline
+	\otoprule
+	\emph{1} & x,y x,y ...
+	\tabularnewline
+	\midrule
+	\emph{5} & x,y x,y ...
+	\tabularnewline
+	\midrule
+	\emph{2} & x,y x,y ...
+	\tabularnewline
+	\midrule
+	\emph{4} & x,y x,y ...
+	\tabularnewline
+	\midrule
+	\emph{3} & x,y x,y ...
+	\tabularnewline
+	\midrule
+	\emph{5} & x,y x,y ...
+	\tabularnewline
+	\midrule
+	\emph{1} & x,y x,y ...
+	\tabularnewline
+	\bottomrule
+\end{tabular}

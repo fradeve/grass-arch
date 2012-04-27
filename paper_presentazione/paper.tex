@@ -1,0 +1,311 @@
+\documentclass{article}
+
+%% Encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage[english,italian]{babel}
+\usepackage{cmbright}
+
+\newenvironment{poliabstract}[1]
+{\renewcommand{\abstractname}{#1}\begin{abstract}}
+{\end{abstract}}
+
+%% Graphics
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{tikz}
+\usetikzlibrary{shapes,decorations}
+
+\graphicspath{{img/}}
+
+%% Symbols and math
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb} %needed for boxes with tikz
+\usepackage[amssymb]{SIunits}
+\usepackage{xfrac}
+\usepackage[all]{xy} %needed for block diagrams
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Layout
+\usepackage{multicol}
+\usepackage{framed}
+\usepackage{fancybox}
+\usepackage{fancyvrb}
+\usepackage[left=3cm,right=2cm,vmargin=2cm]{geometry}
+
+\usepackage{multirow} %% multirow tables
+\usepackage{booktabs} %% quality tables
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]} % definisce una riga da mettere sotto l'intestazione delle tabelle
+
+\usepackage{array}
+\usepackage{ulem}
+\usepackage{fancyhdr}
+\usepackage{dirtree}
+\usepackage{epigraph}
+
+\usepackage[unicode=true,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=true,pdfborder={0 0 0},backref=false,colorlinks=true]{hyperref}
+\hypersetup{pdftitle={Introduzione all'utilizzo di GRASS GIS in archeologia: un manuale collaborativo},pdfauthor={Francesco de Virgilio}}
+
+\usepackage{listings}
+\lstset{language=Bash,backgroundcolor=\color{black!20},basicstyle=\ttfamily\small,literate={~} {$\sim$}{1}}
+\usepackage{setspace}
+\onehalfspacing
+
+\normalem %definisce lo stile delle sottolineature
+\VerbatimFootnotes %abilita l'utilizzo del codice nelle note, con il pacchetto fancyvrb
+
+%% </Layout>
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Introduzione all'utilizzo di GRASS GIS in archeologia:\\un manuale collaborativo}
+\author{Francesco de Virgilio\footnote{\href{mailto:francesco.devirgilio@oia.org}{francesco.devirgilio@oia.org}}\\ \small{O.I.A. -- Open Idea for Archaeology, Università degli Studi di Bari}}
+\date{\today}
+
+\begin{document}
+	\maketitle
+
+	\selectlanguage{italian}
+	\begin{poliabstract}{Sommario}
+		Il GIS nella ricerca archeologica è diventato uno strumento indispensabile per la descrizione, gestione e analisi della stratigrafia, ed i sistemi GIS rilasciati in licenza libera spiccano in questo contesto come strumenti efficaci e professionali. Tra questi, GRASS GIS rivela enormi potenzialità nel settore archeologico, nonostante la documentazione in merito sia carente o frammentaria. Viene qui presentato un manuale redatto dall'associazione O.I.A. per conto della Cattedra di Archeologia Medievale dell'Università degli Studi di Bari, inerente all'utilizzo di GRASS GIS (e altro GFOSS) in ambito archeologico. Il manuale in oggetto è rilasciato in licenza libera (GNU FDL) ed è destinato alla libera diffusione all'interno degli ambienti didattici, per stimolare la crescita di nuovi punti di riferimento a livello nazionale per la didattica del software geografico libero in archeologia. Il manuale è incompleto e collaborativo, permettendo a chiunque di inserire, modificare o eliminare porzioni dell'opera. La redazione del manuale è gestita tramite un sistema di versionamento del codice orientato alla collaborazione tra gli utenti, Bazaar, e compilato usando una suite tipografica libera, \LaTeX.
+	\end{poliabstract}
+
+	\selectlanguage{english}
+	\begin{poliabstract}{Abstract}
+		In archaeological research, GIS has become a necessary instrument for describing, manage and analyze stratigraphic units, and GIS systems released under a free license excel in this context as effective and professional instruments. Among these, GRASS GIS shows a huge potential in archaeological field, although there is fragmentation and lack in documentation in this context. Here we present a manual drafted by O.I.A. association on behalf of University of Bari's Cattedra di Archeologia Medievale, about the usage of GRASS GIS (or other GFOSS) in archaeological field. The manual is released under a free licence (GNU GFDL) and is meant to be freely spread in the academia, to excite the developing of new reference points to a national level for the education in GFOSS for archaeology applications. The manual is incomplete and collaborative, allowing anyone to insert, modify or delete portions of the whole work. The redaction of the manual is managed using a code versioning systems oriented to collaboration among users, Bazaar, and compiled using a free typographic suite, \LaTeX.
+	\end{poliabstract}
+
+	\clearpage
+
+	\begin{multicols}{2}
+	\selectlanguage{italian}
+
+		\section{Perché GRASS GIS}
+			\emph{Introduzione all'utilizzo di GRASS GIS in archeologia} nasce dall'esigenza, interna alla Cattedra di Archeologia Medievale dell'Università degli Studi di Bari, di affrontare il problema della documentazione archeologica degli scavi del sito medievale di Siponto (FG); la pubblicazione del manuale è stata organizzata e promossa da O.IA. -- Open Idea for Archaeology\footnote{\url{http://www.openoia.org}}.
+
+			La progressiva informatizzazione di tutta la documentazione archeologica collezionata in anni di attività ha portato alla necessità di affrontare la gestione del dato elettronico in maniera quanto più possibile flessibile ed economica allo stesso tempo. In questo contesto, GRASS GIS rivela la sua estrema utilità; particolarmente apprezzabile è la possibilità di gestire una quantità enorme di dati, con un'avidità di potenza di calcolo decisamente ridotta, al contrario di altri software con caratteristiche affini, rilasciati in licenza libera e non (ArchView, Quantum GIS, ecc.).
+
+			La flessibilità di GRASS GIS permette di gestire un numero notevole di differenti formati di dati, e di creare complesse elaborazioni, pur tuttavia passando per una gestione del dato non eccessivamente complessa. A differenza di altri sistemi GIS, GRASS ha una curva d'apprendimento molto più ripida rispetto ad altri software, situazione che tuttavia è indice di una eccezionale potenza intrinseca, derivante dai circa 400 moduli eseguibili che lo compongono, e dei risultati professionali che si possono ottenere.
+
+			Inoltre, particolare da non trascurare in ambito didattico, GRASS GIS è rilasciato in licenza libera (GNU GPL): ciò consente non solo di poter ottenere il software gratuitamente (scaricandolo liberamente via internet) ma anche di utilizzarlo e di aggiornarlo senza alcun costo di licenza, così come di distribuirlo senza alcun onere a tutti gli studenti. Inoltre, la completa documentazione disponibile online, a cura dello stesso team di sviluppo del software, permette a tutti di avere accesso alle spiegazioni dettagliate sull'utilizzo dei moduli che compongono il programma (senza la necessità di acquisto di manuali aggiuntivi). In ultima analisi, gli utenti più esperti hanno la possibilità di ``estendere'' il software con lo sviluppo di moduli e script personalizzati, per agevolare alcune operazioni ripetitive o per adattare il software di analisi geospaziale alle proprie peculiari esigenze (sono note applicazioni che vanno dall'ingegneria delle reti idriche a quella delle reti stradali, passando per le analisi meteorologiche). Inoltre, GRASS può essere incorporato all'interno di altri programmi che possono fungere da interfaccia utente come ad esempio, Quantum GIS, facilitando il lavoro di gestione del dato archeologico.
+
+		\section{I GIS liberi in archeologia}
+			L'utilizzo di GRASS GIS in ambito archeologico segna un ulteriore passo avanti sulla strada della ricerca di standard all'interno della documentazione archeologica, ricerca che si è affermata di pari passo con l'introduzione dell'\emph{archeoinformatica}, disciplina tesa all'applicazione delle metodologie e delle strumentazioni informatiche all'archeologia stratigrafica e all'archeologia quantitativa (in quest'ultimo contesto, GRASS offre potenti strumenti di analisi statistica). Quindi, se a livello di documentazione di scavo non esiste attualmente veramente nessuno standard, certamente per tutto quello che concerne l'archeologia stratigrafica e il telerilevamento GRASS è al passo con qualunque altro software proprietario.
+
+			L'adozione di standard, in tutti i campi della ricerca scientifica, è un concreto aiuto alla comunicazione e divulgazione dei risultati. Tuttavia, la ricerca di standard internazionali dovrebbe passare sia per l'utilizzo di standard aperti, sia attraverso l'impiego di software open source: in entrambe queste affermazioni risiede la coscienza di fondo che la ricerca storica -- ed in particolare quella archeologica -- non può essere appannaggio di pochi, ma deve innescare un processo che va dallo studio delle fonti, alla ricerca sul campo, all'analisi dei risultati; il processo deve concludersi con una divulgazione che consenta all'Uomo di conoscere e comprendere la propria Storia e quella del luogo in cui vive, per sviluppare una nuova cultura della comprensione e trasmissione al futuro del patrimonio storico.
+
+			L'utilizzo di GRASS in archeologia\footnote{Si faccia ad esempio riferimento al \href{http://grass.osgeo.org/wiki/Archeology}{wiki ufficiale di GRASS}.}, al 2009, può vantare innumerevoli campi d'applicazione, spesso mai raggiunti da software proprietari: si guardi ad esempio il lavoro presentato al GRASS Meeting del 2006 da parte di Arc-Team s.n.c.\footnote{Reperibile da \href{file:http://www.dimset.unige.it/eventi/grass/presentazioni/sessione 3/bezzi et al.pdf}{http://www.dimset.unige.it/eventi/grass/presentazioni/sessione 3/bezzi et al.pdf}.} sull'utilizzo dei \emph{voxel} (raster 3D) per la gestione di dati archeologici di scavo, poi ripresi sempre da Arc-Team e da Undine Lieberwirth (quest'ultima al workshop ``Archaeologie~und~Computer'' di Vienna del 2006\footnote{\emph{Workshop Archaeologie und Computer, Kulturelles Erbe und Neue Technologien} - Wien, Aramus 2006, la prima spedizione archeologica internazionale ad utilizzare soltanto Software Libero.}). I lavori di Emanuel Demetrescu sull'archeologia urbana di Roma\footnote{Le diapositive dell'intervento sono disponibili presso il \href{file:http://www.perseo.lettere.unipd.it/workshop08/lib/exe/fetch.php?id=download&cache=cache&media=workshop08:documenti:demetrescu_lic.odp}{portale} dell'Università degli Studi di Padova.} sono certamente uno degli esempi più sorprendenti delle grandi potenzialità di GRASS (e dei software connessi) applicati ad un caso di archeologia reale, tra l'altro con risultati interessanti anche al di là delle sperimentazioni tecniche. Infine, del team di sviluppo di GRASS fa parte Michael Barton, archeologo/antropologo statunitense che svolge ricerche territoriali sia oltreoceano sia in Spagna. A livello italiano, risulta inoltre molto preziosa la testimonianza offerta nel secondo volume della collana ``Metodi e temi dell'archeologia medievale'', ampiamente descritta nel volume ``Informatica ed Archeologia Medievale -- L'esperienza senese'' (esperienza che ha previsto anche l'utilizzo dei software open source GRASS e QuantumGIS)\footnote{\emph{Metodi e temi dell'archeologia medievale}, vol. 2, ``Informatica e Archeologia Medievale --- L'esperienza senese'', a cura di Vittorio Fronza, Alessandra Nardini, Marco Valenti.}.
+
+		\section{GRASS GIS nella didattica\label{sec:grass-didattica}}
+			La possibilità di usare una suite completa di software e metodologie, offerta dai progetti sponsorizzati da OSGeo, in maniera completamente gratuita, permette a qualunque ente didattico di avere accesso a strumenti di altissima qualità da impiegare nell'insegnamento, rendendo i propri studenti competitivi sul mercato del lavoro. In Italia, tuttavia, si riscontra una scarsa diffusione degli insegnamenti legati al software geografico libero (d'ora in poi, \emph{GFOSS}). I vantaggi legati all'utilizzo del software libero, come le esperienze internazionali in ambito didattico dimostrano, non sono legati solo alla reperibilità del medesimo (che oggi è alla portata di tutti grazie alle connessioni internet ad alta velocità), ma anche e soprattutto alla \emph{userbase}, la comunità di utenti a supporto nei neofiti. La difficoltà nel reperire docenti e personale esperto nell'utilizzo di GFOSS, soprattutto in ambito archeologico, ha portato ad una diffusione limitata soltanto agli ambienti in cui esistono dei punti di riferimento nella didattica.
+
+			In quest'ottica, la creazione di punti di riferimento è legata in primo luogo alla documentazione. Nonostante il GFOSS (come nelle regole auree del software libero) sia solitamente molto ben documentato, il corpus di manuali in ambito archeologico è frammentario, legato ad alcune fasi del \emph{postprocessing} o a singole funzioni di software molto complessi come GRASS. L'obiettivo di questo manuale, in sintesi, è la raccolta di esperienze sull'utilizzo di GRASS GIS e del software geografico libero ad esso collegato (PostGIS, PostgreSQL, OpenLayers, ecc.) per creare un testo di riferimento che possa essere d'aiuto nella didattica del GFOSS in ambito archeologico; il fine ultimo è una divulgazione efficiente e l'allargamento degli orizzonti informatici e geografici all'interno del mondo accademico e imprenditoriale italiano nel settore archeologico.
+
+			Questo obiettivo, tuttavia, sarebbe più facilmente raggiungibile se esistessero degli standard per la raccolta, catalogazione e gestione del dato archeologico. Pur potendo intravedere delle tendenze a livello nazionale o internazionale, non esistono forme definite e totalmente condivise che regolino i processi di informatizzazione. Per questo, in \emph{Introduzione all'utilizzo di GRASS GIS} vengono definiti dei casi di studio ed analizzati singolarmente, descrivendo i processi teorici alla base delle singole operazioni e cercando di fornire elementi per una valutazione autonoma del caso.
+
+			Infine, tra le tante forme possibili di divulgazione dei contenuti, si è scelta quella del libro per la sua praticità, senza trascurare l'esportazione del documento nei formati di consultazione veloce come \texttt{.pdf} o per il web (\texttt{html}). Le scelte nel dettaglio verrano descritte di seguito.
+		
+		\section{Impostazione editoriale}
+			Questo manualetto è orientato ad un pubblico che ha già acquisito una certa familiarità con almeno un sistema GIS, e cerca di affrontare le problematiche più importanti nella gestione del dato archeologico. L'approccio di GRASS GIS alla risoluzione di alcuni problemi può alle volte sembrare inutilmente macchinoso, ma si scoprirà essere sorprendentemente pratico e veloce una volta acquisita familiarità con la maniera di operare caratteristica del software; soprattutto, GRASS si rivela estremamente utile quando si ha necessità di operare in maniera precisa e consapevole su grandi quantità di dati, come può avvenire durante (o dopo) uno scavo archeologico.
+
+			In questa sede, soprattutto per la grande quantità di documentazione disponibile sui sistemi GIS e su GRASS in particolare, si eviteranno ripetizioni di materiale già pubblicato da altri autori, limitando molti argomenti ad un semplice richiamo. Al termine del manuale, nella Bibliografia, sono disponibili tutti i riferimenti per approfondire le caratteristiche dei sistemi GIS, dell'analisi geografica e territoriale, e sull'utilizzo di GRASS.
+
+			Alcune caratteristiche del manuale sono state studiate per una consultazione rapida: si è preferito inserire approfondimenti o passaggi pratici (molto spesso contenenti codice) all'interno di caselle contraddistinte da un simbolo ($\clubsuit$) che aiuta il lettore a reperire velocemente i comandi di cui ha bisogno (fig.\ref{fig:box}).
+
+			Per i passaggi fondamentali da effettuare nel terminale si è scelto un carattere differente ed i concetti chiave sono evidenziati con l'aiuto di grassetto e corsivazione, cos\`{i} come le voci dei menù e delle finestre (fig.\ref{fig:font}).
+
+			Nella scelta tra terminale e interfacce si è preferito quasi sempre introdurre una nuova funzione o modulo con il terminale e presentare nella maniera più dettagliata possibile l'interfaccia ad essa corrispondente. L'interfaccia presa in esame è quella in wxPython (scelta sia per la migliore integrazione con l'ambiente desktop di default di Ubuntu Linux, GNOME, sia per la disponibilità di una versione in italiano). Nell'ottica di abituare il lettore all'interazione con i comandi da terminale (che non hanno -- fortunatamente -- un equivalente italiano), si è scelto di adottare anche per le interfacce la lingua inglese.
+
+		\section{Un manuale collaborativo}
+			L'orientamento editoriale scelto per \emph{Introduzione a GRASS GIS per gli archeologi} è quello di un progetto collaborativo. Nato come un semplice insieme di appunti durante l'organizzazione del GIS di scavo, è stato arricchito progressivamente in funzione delle esperienze collezionate. Questo ha portato ad una certa completezza negli argomenti di base, ma a scapito dell'omogeneità dell'approfondimento di altri argomenti più complessi. Per questo, allo stato attuale, il manuale può definirsi fortemente incompleto e un continuo \emph{work in progress}. La scelta di rilasciarlo in licenza libera GNU FDL ha aperto le porte alla collaborazione e alla possibilità che nuove esperienze e metodi si aggiungano o sostituiscano a quelle già sedimentate.
+
+			Gli elementi chiave della struttura collaborativa del documento sono puramente informatici:
+			\begin{description}
+				\item[\LaTeX]è il linguaggio di programmazione tipografica usato per redarre il documento, aumenta la persistenza del documento stesso perché fornisce lo stesso output (PDF) in tutte le macchine che hanno installata una distribuzione *\TeX; ne aumenta la portabilità perché supporta l'esportazione in diversi formati (come visto in \textsection\ref{sec:grass-didattica}); incentiva la collaborazione grazie alla struttura dei file, editabili con un comune editor di testo; inoltre, l'output è estremamente versatile e si presta bene a diverse forme di pubblicazione cartacea (libro, booklet, ecc.).
+				\item[PGF/TikZ]è una imponente estensione di \LaTeX per le illustrazioni tecniche, utile per diagrammi, grafici, ecc (fig.\ref{fig:tikz}).
+				\item[\TeX Live]è la distribuzione di pacchetti \LaTeX utilizzata, multipiattaforma, garantisce la massima copertura per tutti i sistemi operativi.
+				\item[Bazaar]è il sistema di versionamento del codice ideato da Canonical Ltd., utilizzato per tenere traccia dei contributi al documento quando si ha collaborazione parallela di più utenti; presenta diversi vantaggi\footnote{Si veda \url{http://doc.bazaar.canonical.com/migration/en/why-switch-to-bazaar.html}.} rispetto ad altri VCS.
+				\item[Launchpad]è un sistema \emph{web-based}\footnote{\url{https://launchpad.net/}.} collaborativo per lo sviluppo del software, rilasciato in licenza libera, mantenuto nella sua versione ufficiale da Canonical Ltd., che supporta Bazaar e consente agli utenti di confrontarsi durante lo sviluppo del codice, oltre che di collaborare al codice stesso; permette inoltre di distribuire pacchetti software per sistemi Ubuntu e Debian GNU/Linux\footnote{Funzione utile nel caso in cui, insieme alla guida, si voglia offrire l'installazione anche di script utili, introdotti negli appendici del manuale stesso.}.
+			\end{description}
+
+%% indentazione eliminata per problemi con il pacchetto listings
+In questa sede si assume che la macchina abbia una distribuzione \TeX Live funzionante\footnote{Scaricabile dal sito ufficiale, \url{http://tug.org/texlive}.}.
+
+Per ottenere una copia del manuale è sufficiente installare Bazaar\footnote{Ulteriori informazioni sono reperibili su \url{http://wiki.bazaar.canonical.com/Download}.} sulla propria distribuzione (preferibilmente Ubuntu Linux); la creazione di una cartella di lavoro e l'ottenimento di una copia locale del codice viene effettuata con seguenti i comandi da terminale:
+
+\begin{lstlisting}
+bzr branch lp:grass-arch
+\end{lstlisting}
+
+Le estensioni al \LaTeX~utilizzate per la redazione del manuale sono riportate nel file di installazione (\verb|grass-arch/INSTALL.txt|) e sono state selezionate perché tutto il documento possa essere compilato con \texttt{pdflatex}, lanciando il comando sul file principale, che richiama in automatico tutti i singoli file dei capitoli e degli appendici durante la compilazione stessa:
+
+\begin{lstlisting}
+pdflatex grass-arch.tex
+\end{lstlisting}
+
+La collaborazione alla scrittura del manuale può essere operata aprendo un branch a proprio nome su Launchpad, nel quale caricare la propria versione modificata dei file; l'apertura del branch dovrà essere segnalata agli amministratori del progetto, che provvederanno (dopo le opportune modifiche) ad effettuare un \emph{merge}, ovvero ad incorporare le modifiche all'interno del file principale del manuale. Nel contesto di progetti collaborativi, questo modo di procedere viene definito \emph{decentralized with human gatekeeper workflow}, e consente a tutti di proporre delle modifiche, mantenendo comunque degli standard molto alti del prodotto: le modifiche da incorporare vengono decise dagli amministratori\footnote{Ciò non lede l'aspetto democratico del progetto, ma amplia e definisce quello meritocratico; è auspicabile inoltre che le modifiche proposte ed i nuovi branch vengano discussi sulla mailing list del progetto, cos\`{i} che ogni cambiamento venga vagliato dalla comunità.}.
+
+La collaborazione prevede in primo luogo l'apertura di un proprio repository locale:
+
+\begin{lstlisting}
+cd /home/utente
+bzr init-repo grass-arch
+\end{lstlisting}
+
+al quale segue il download dei dati dalla versione \emph{trunk} (ovvero la versione di sviluppo principale):
+
+\begin{lstlisting}
+bzr branch lp:grass-arch/trunk \\
+grass-arch/utente
+\end{lstlisting}
+
+È quindi possibile apportare le modifiche con un editor di testo:
+
+\begin{lstlisting}
+vim grass-arch/grass-arch.tex
+\end{lstlisting}
+
+e di seguito caricare sul nuovo branch personale in Launchpad la versione modificata:
+
+\begin{lstlisting}
+bzr commit -m ``descrizione commit''
+bzr push lp:~user/grass-arch/nome_branch
+\end{lstlisting}
+
+	\end{multicols}
+
+	\pagebreak
+
+	\begin{figure}
+		\centering
+		\caption[Layout utilizzati all'interno del manuale.]{Layout utilizzati all'interno del manuale.}
+		\subfloat[Box per i listati di codice o suggerimenti.]{
+			\label{fig:box}
+			\begin{tikzpicture}[thick,scale=0.004\textwidth] %this measure generates a page half the text size
+				\draw[fill=black!5]
+				(0pt,0pt) --
+				(100pt,0pt) [rounded corners=5pt] --
+				(100pt,100pt) --
+				(80pt,120pt) [rounded corners=0pt] --
+				(0pt,120pt) --
+				cycle;
+				\draw
+				(75pt,120pt) .. controls (80pt,120pt) and (80pt,115pt) ..
+				(80pt,100pt) .. controls (95pt,100pt) and (100pt,100pt) ..
+				(100pt,95pt);
+				\node at (50pt,50pt) {\tiny
+				  \begin{minipage}[c]{0.30\linewidth}
+
+					\def\savelastnode{\pgfextra\edef\tmpA{\tikzlastnode}\endpgfextra}
+					\def\restorelastnode{\pgfextra\edef\tikzlastnode{\tmpA}\endpgfextra}
+
+					% Define box and box title style
+
+					\tikzstyle{mybox} = [draw=black, fill=black!10, very thick,
+					    rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+					\tikzstyle{fancytitle} =[fill=black, text=white]
+					\tikzstyle{club suit} = [append after command={%
+					    \savelastnode node[fancytitle,rounded corners] at (\tikzlastnode.east)%
+					    {$\clubsuit$}\restorelastnode }]
+					\tikzstyle{title} = [append after command={%
+					    \savelastnode node[fancytitle,right=10pt] at (\tikzlastnode.north west)%
+					    {#1}\restorelastnode}]
+
+					\begin{tikzpicture}
+						\node [mybox,club suit,title=Lista delle mappe in un gruppo] (box){%
+						\begin{minipage}{0.90\textwidth}{\tiny{
+							Come precisato, dopo aver importato un layer vettoriale all'interno di GRASS, questo viene diviso dal driver dbf in due tabelle. Il programma assegna ad entrambe un nome, lo stesso con cui si è nominata la carta da importare. Il fatto che due tabelle abbiano lo stesso nome non costituisce un problema per GRASS perch all'interno della cartella di lavoro le due tabelle sono posizionate in due sottocartelle diverse. Invece, GRASS non tollera la presenza del punto ``.'' all'interno del nome della carta, perch è un carattere che non è ritenuto valido dal linguaggio SQL che viene utilizzato per interrogare il database delle tabelle.}}
+						    \end{minipage}
+					};
+					\end{tikzpicture}
+				  \end{minipage}
+				};
+			\end{tikzpicture}
+		}\hfill
+		\subfloat[Esempio di differenziazione delle famiglie di font per evidenziare concetti e comandi.]{\label{fig:font}\begin{tikzpicture}[thick,scale=0.004\textwidth] %this measure generates a page half the text size
+				\draw[fill=black!5]
+				(0pt,0pt) --
+				(100pt,0pt) [rounded corners=5pt] --
+				(100pt,100pt) --
+				(80pt,120pt) [rounded corners=0pt] --
+				(0pt,120pt) --
+				cycle;
+				\draw
+				(75pt,120pt) .. controls (80pt,120pt) and (80pt,115pt) ..
+				(80pt,100pt) .. controls (95pt,100pt) and (100pt,100pt) ..
+				(100pt,95pt);
+				\node at (50pt,50pt) {\tiny
+				  \begin{minipage}[c]{0.37\linewidth}
+					\subsection{Creare e gestire un gruppo}
+						Si ipotizzi di avere la location XY \emph{immagini} contenente (all'interno del proprio mapset di base, \emph{PERMANENT}), una mappa raster dell'Istituto Geografico Militare (IGM) denominata \emph{siponto\_IGM}, e di volerla georeferenziare ed inserire nella location \emph{siponto}, nel suo mapset di base (\emph{PERMANENT}).
+						
+						\begin{enumerate}
+							\item Accedere a GRASS ed avviare la location contenente il mapset dell'immagine da georeferenziare (\emph{immagini}); è essenziale che il gruppo sia creato all'interno della location che contiene l'immagine da elaborare, non nella location di destinazione.
+							\item Dal menù selezionare \textsf{$\text{Imagery}\rightarrow\text{Develop~images~and~groups}\rightarrow\text{Create/edit~group}$}; nella finestra appena aperta è necessario inserire nella scheda \textsf{Required} il nome per il nuovo gruppo (nel nostro esempio \emph{carte\_IGM}); nella scheda \textsf{Optional} è possibile definire, nell'ultimo menù a tendina, quali immagini di mappe raster inserire nel gruppo. È possibile selezionarne anche molteplici, ma in questa prima importazione è disponibile solo la mappa \emph{siponto\_IGM}.
+							\item Fare quindi click su \textsf{Run}. La carta \emph{siponto\_IGM} viene inserita nel gruppo \emph{carte\_IGM}, e veniamo avvisati dal programma che l'operazione è andata a buon fine.
+						\end{enumerate}
+				  \end{minipage}
+				  };
+			\end{tikzpicture}
+		}\\\vfill
+		\subfloat[Esempio di grafico realizzato con TikZ.]{\label{fig:tikz}\begin{tikzpicture}[thick,scale=0.004\textwidth] %this measure generates a page half the text size
+				\draw[fill=black!5]
+				(0pt,0pt) --
+				(100pt,0pt) [rounded corners=5pt] --
+				(100pt,100pt) --
+				(80pt,120pt) [rounded corners=0pt] --
+				(0pt,120pt) --
+				cycle;
+				\draw
+				(75pt,120pt) .. controls (80pt,120pt) and (80pt,115pt) ..
+				(80pt,100pt) .. controls (95pt,100pt) and (100pt,100pt) ..
+				(100pt,95pt);
+				\node at (50pt,50pt) {\tiny
+					\begin{minipage}[c]{0.37\linewidth}
+						\begin{center}
+						$\xymatrix@C=40pt{*+[F]{dwg}\ar[r]^{pulizia} & *+[F=]{dxf}\ar[r] & *+[F-,]{layer~GRASS}}$
+						\end{center}
+						
+						Oggi il formato dxf è oggi uno standard \emph{de facto} per lo scambio di dati CAD tra varie applicazioni, tra cui anche GRASS, che ne integra il supporto. Lo svantaggio dei dati CAD rispetto all'impostazione ``GIS'' per la gestione dell'informazione geografica, come abbiamo visto in \textsection\ref{par:GRASS-=0000E8-ordinato}, è che non possono dirsi propriamente \emph{georeferenziati}, poichè qualsiasi geometria disegnata in un CAD in realtà è localizzata all'interno di un sistema di riferimento interno al file, più precisamente all'interno di una coppia di assi cartesiani XY avente origine nell'angolo in basso a sinistra del foglio di lavoro; ciò significa che ogni punto all'interno del CAD è descritto da una coppia di coordinate non geografiche.  Inoltre, i dati CAD mal si prestano alla memorizzazione di informazioni aggiuntive (potremmo quindi dire che i dati CAD sono quasi essenzialmente rappresentati da geometrie e non da attributi), al contrario di formati usati nei GIS, come lo SHAPE file. Questa situazione si è col tempo accompagnata alla separazione della documentazione elettronica dello scavo (geometrie) da quella cartacea (schede di unità stratigrafica, che costituiscono i naturali attributi delle geometrie). Un GIS archeologico può ovviare a questa situazione, rendendo le schede di US \emph{spatially enabled}.
+					\end{minipage}
+				  };
+			\end{tikzpicture}
+		}\hfill
+		\subfloat[Esempio di grafico esemplificativo realizzato con alcuni pacchetti \LaTeX.]{\label{fig:font}\begin{tikzpicture}[thick,scale=0.004\textwidth] %this measure generates a page half the text size
+				\draw[fill=black!5]
+				(0pt,0pt) --
+				(100pt,0pt) [rounded corners=5pt] --
+				(100pt,100pt) --
+				(80pt,120pt) [rounded corners=0pt] --
+				(0pt,120pt) --
+				cycle;
+				\draw
+				(75pt,120pt) .. controls (80pt,120pt) and (80pt,115pt) ..
+				(80pt,100pt) .. controls (95pt,100pt) and (100pt,100pt) ..
+				(100pt,95pt);
+				\node at (50pt,50pt) {\tiny
+				  \begin{minipage}[c]{0.37\linewidth}
+					\framebox{
+						\begin{minipage}[t]{0.9\columnwidth}
+								\dirtree{%
+								.1 /home/nomeutente. 
+								.2 grassdata. 
+								.3 \underbar{location1}.\DTcomment{regione di lavoro}. 
+								.4 PERMANENT.\DTcomment{mapset di base}. 
+								.4 mapset1.\DTcomment{altri mapset$\downarrow$}. 
+								.4 mapset2. 
+								.4 mapset3. 
+								.3 \underbar{location2}. 
+								.4 PERMANENT. 
+								.4 location1. 
+								.4 location2. }
+						\end{minipage}}
+				  \end{minipage}
+				  };
+			\end{tikzpicture}
+		}
+		\label{fig:prova}
+	\end{figure}
+
+\end{document}

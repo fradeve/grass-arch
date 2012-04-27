@@ -1,0 +1,62 @@
+\begin{table}
+	\centering
+	\begin{tabular}{ccc}
+		\toprule
+		Prefisso & Funzione & Esempio
+		\tabularnewline
+		\otoprule
+		
+		d. &
+		visualizzazione (\textbf{\emph{d}}\emph{isplay}) &
+		\emph{} \begin{minipage}[t]{0.3\columnwidth} \emph{d.rast}\\ visualizza una carta raster \end{minipage} \tabularnewline \midrule db. &
+		gestione del \textbf{d}ata\textbf{b}ase &
+		
+		\emph{} \begin{minipage}[t]{0.3\columnwidth} \emph{db.tables}\\ lista tutte le \emph{table} di un database \end{minipage}
+			
+		\tabularnewline
+		\midrule
+		
+		g. &
+		operazioni di tipo \textbf{g}enerale &
+		\begin{minipage}[t]{0.3\columnwidth} \emph{g.list}\\ lista delle carte disponibili \end{minipage}
+			
+		\tabularnewline
+		\midrule
+		
+		i. &
+		elaborazione di \textbf{i}mmagini &
+		\begin{minipage}[t]{0.3\columnwidth} \emph{i.rectify}\\ rettifica le immagini \end{minipage}
+			
+		\tabularnewline
+		\midrule
+
+		ps. &
+		creazione di carte in formato \textbf{P}ost\textbf{S}cript &
+		\emph{} \begin{minipage}[t]{0.3\columnwidth} \emph{ps.map}\\ crea una carta in formato PostScript \end{minipage}
+		
+		\tabularnewline
+		\midrule
+		
+		r. &
+		elaborazione di carte \textbf{r}aster &
+		\emph{} \begin{minipage}[t]{0.3\columnwidth} \emph{r.reclass}\\ modifica le categorie (\emph{cat}) di una carta raster \end{minipage}
+		
+		\tabularnewline
+		\midrule
+		
+		r3. &
+		elaborazione dati \textbf{r}aster \textbf{3}D (\emph{voxel}) &
+		\emph{} \begin{minipage}[t]{0.3\columnwidth} \emph{r3.info}\\ riporta le informazioni relative ad una carta raster 3D \end{minipage}
+		
+		\tabularnewline
+		\midrule
+		
+		v. &
+		elaborazione di carte \textbf{v}ettoriali & \emph{} \begin{minipage}[t]{0.3\columnwidth} \emph{v.patch}\\ unisce più carte vettoriali \end{minipage}
+			
+		\tabularnewline
+		\bottomrule
+	
+	\end{tabular}
+	\caption{{\small \label{tab:Esempi-di-comandi}Esempi di comandi in GRASS GIS.}}
+\end{table}

@@ -1,0 +1,26 @@
+% We need to save the node
+% Every append after command might be useful to have this code
+
+\def\savelastnode{\pgfextra\edef\tmpA{\tikzlastnode}\endpgfextra}
+\def\restorelastnode{\pgfextra\edef\tikzlastnode{\tmpA}\endpgfextra}
+
+% Define box and box title style
+
+\tikzstyle{mybox} = [draw=black, fill=black!10, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[fill=black, text=white]
+\tikzstyle{club suit} = [append after command={%
+    \savelastnode node[fancytitle,rounded corners] at (\tikzlastnode.east)%
+    {$\clubsuit$}\restorelastnode }]
+\tikzstyle{title} = [append after command={%
+    \savelastnode node[fancytitle,right=10pt] at (\tikzlastnode.north west)%
+    {#1}\restorelastnode}]
+
+\vspace{10pt}
+\begin{tikzpicture}
+\node [mybox,club suit,title=I nomi delle carte] (box){%
+    \begin{minipage}{0.90\textwidth}{\small{
+	Come precisato, dopo aver importato un layer vettoriale all'interno di GRASS, questo viene diviso dal driver dbf in due tabelle. Il programma assegna ad entrambe un nome, lo stesso con cui si è nominata la carta da importare. Il fatto che due tabelle abbiano lo stesso nome non costituisce un problema per GRASS perché all'interno della cartella di lavoro le due tabelle sono posizionate in due sottocartelle diverse. Invece, GRASS non tollera la presenza del punto ``.'' all'interno del nome della carta, perché è un carattere che non è ritenuto valido dal linguaggio SQL che viene utilizzato per interrogare il database delle tabelle.}}
+    \end{minipage}
+};
+\end{tikzpicture}

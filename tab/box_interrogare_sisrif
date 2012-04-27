@@ -1,0 +1,41 @@
+% We need to save the node
+% Every append after command might be useful to have this code
+
+\def\savelastnode{\pgfextra\edef\tmpA{\tikzlastnode}\endpgfextra}
+\def\restorelastnode{\pgfextra\edef\tikzlastnode{\tmpA}\endpgfextra}
+
+% Define box and box title style
+
+\tikzstyle{mybox} = [draw=black, fill=black!10, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[fill=black, text=white]
+\tikzstyle{club suit} = [append after command={%
+    \savelastnode node[fancytitle,rounded corners] at (\tikzlastnode.east)%
+    {$\clubsuit$}\restorelastnode }]
+\tikzstyle{title} = [append after command={%
+    \savelastnode node[fancytitle,right=10pt] at (\tikzlastnode.north west)%
+    {#1}\restorelastnode}]
+
+\vspace{10pt}
+\begin{tikzpicture}
+\node [mybox,club suit,title=Interrogare su coordinate e sistema di riferimento] (box){%
+    \begin{minipage}{0.90\textwidth}{\small{
+	Una volta impostata la region, potrebbe essere necessario interrogare GRASS per sapere quali sono le coordinate ed il sistema di riferimento usati nella location; è possibile farlo dal menù \textsf{\small$\text{Config}\rightarrow\text{Region}\rightarrow\text{Display~region}$} oppure direttamente dalla riga di comando tramite \texttt{g.region -p} ottenendo un output simile al seguente:
+	
+	\begin{verbatim}
+		projection: 3 (Latitude-Longitude)
+		zone:       0
+		datum:      wgs84
+		ellipsoid:  wgs84
+		north:      42:00:01.6668N
+		south:      40:59:58.0776N
+		west:       14:59:59.0244E
+		east:       16:00:01.4184E
+		ewres:      0:00:02.633329
+		rows:       2079
+		cols:       1368
+		cells:      2844072
+		\end{verbatim}}}
+    \end{minipage}
+};
+\end{tikzpicture}

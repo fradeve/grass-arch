@@ -1,0 +1,63 @@
+GRASS GIS per gli Archeologi
+Un manuale collaborativo
+============================
+
+## Installazione dipendenze
+
+	### Bazaar
+	
+	Bazaar è il sistema di versionamento del codice utilizzato per distribuire e gestire i
+	la scrittura collaborativa del manuale, sviluppato da Canonical L.t.d..
+	È possibile scaricarlo e installarlo per tutte le piattaforme seguendo le istruzioni
+	sul sito ufficiale:
+
+	http://wiki.bazaar.canonical.com/Download
+	
+	
+	### TeXLive
+	
+	Per poter compilare corrrettamente il codice è indispensabile aver installato TeXLive 2011.
+	Le istruzioni per l'installazione sulle varie piattaforme sono disponibili sul sito della
+	distribuzione:
+
+	https://www.tug.org/texlive/quickinstall.html
+
+	L'utilizzo di pacchetti aggiuntivi rispetto alla distribuzione standard è indispensabile
+	per la compilazione. I pacchetti necessari sono:
+
+	* inputenc
+	* babel
+	* color
+	* graphics
+	* graphicx
+	* subfig
+	* wrapfig
+	* sidecap
+	* tikz
+	* textcomp
+	* amsmath
+	* amssymb
+	* upgreek
+	* SIunits
+	* xfrac
+	* xy
+	* multicol
+	* framed
+	* fancybox
+	* fancyvrb
+	* geometry
+	* multirow
+	* booktabs
+	* array
+	* ulem
+	* fancyhdr
+	* dirtree
+	* epigraph
+	* hyperref
+	* listings
+	* setspace
+	* eso-pic
+	
+	è possibile installarli in un unico comando:
+	
+	tlmgr install inputenc babel color graphics graphicx subfig wrapfig sidecap tikz textcomp amsmath amssymb upgreek SIunits xfrac xy multicol framed fancybox fancyvrb geometry multirow booktabs array ulem fancyhdr dirtree epigraph hyperref listings setspace eso-pic

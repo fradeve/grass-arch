@@ -1,0 +1,44 @@
+\chapter{\label{cha:Usare-QGIS-come}Usare QGIS come interfaccia a GRASS}
+
+La possibilità di usare Quantum GIS per aprire i dati della cartella grassdata, e quindi fungere da interfaccia a GRASS, è offerta da un plugin per QGIS scritto inizialmente da Radim Blazek, quando era sviluppatore del \emph{core} di GRASS 6.
+
+In generale, l'utilizzo di QGIS per interfacciarsi con GRASS è fortemente consigliato nel caso in cui ci sia bisogno di caricare layer di carte molto estese e grandi quantità di dati, poichè la visualizzazione ed il rendering dei dati all'interno del \emph{map display} di Quantum GIS risulta molto più veloce di quella del map display di GRASS.
+
+\section{Installare e avviare Quantum GIS}
+
+	Analogamente a quanto visto per l'installazione di GRASS in \textsection\ref{sec:Installazione-su-Ubuntu}, anche QGIS è presente nell'archivio software in rete di Ubuntu GNU/Linux, all'interno del pacchetto \texttt{qgis}; il plugin di QGIS per GRASS è invece presente in un pacchetto separato, \texttt{qgis-plugin-grass}: installarli entrambi.
+
+	QGIS è avviabile dal menù \textsf{$\text{Applicazioni}\rightarrow\text{Scienza}\rightarrow\text{Quantum~GIS}$}.
+
+
+\section{Operazioni di base}
+	Tutte le funzioni di GRASS sono accessibili dal menù \textsf{$\text{Plugins}\rightarrow\text{GRASS}$}, che comprende le seguenti voci:
+
+	\begin{description}
+		\item [{\textsf{Apri~mapset}}] permette di aprire un mapset esistente, scegliendo la posizione della cartella grassdata, e visualizzando automaticamente nei menù a tendina sia le location che i rispettivi mapset, dopo aver scelto i quali è possibile premere \textsf{OK }per cominciare a lavorare;
+		\item [{\textsf{Nuovo~mapset}}] permette di creare un mapset da zero, in una nuova location o selezionando una location esistente, e richiedendo ovviamente gli stessi parametri visti in \textsection\ref{sub:Definire-una-location};
+
+		\begin{itemize}
+			\item nel primo passaggio verrà richiesto in quale cartella è posizionata la grassdata; è possibile creare una nuova grassdata dal proprio gestore di cartelle e selezionarla, oppure selezionarne una esistente, nel qual caso verrà successivamente offerta la possibilità di scegliere o meno se creare una nuova location;
+			\item creando una nuova location, verrà richiesto il sistema di coordinate della location: selezionare \textsf{Non~definito} per impostare una location XY, oppure \textsf{Proiezione} se si intende utilizzare una certa proiezione, selezionabile dai menù immediatamente adiacenti. È possibile abbreviare la ricerca di un sistema di proiezione inserendo nella casella \textsf{Cerca} direttamente il codice EPSG o il nome; i quattro pulsanti sotto la casella di testo della ricerca mostrano i sistemi usati più recentemente;
+			\item il passaggio successivo consente di definire l'estensione della region, ed il plugin di GRASS per QGIS offre un menù dal quale impostare l'estensione in base al territorio di una nazione a scelta da menù a tendina; per concludere l'operazione selezionare \textsf{Imposta};
+			\item l'ultimo passaggio consiste nel definire il nome del nuovo mapset.
+		\end{itemize}
+	
+		\item [{\textsf{Chiudi~mapset}}] serve a chiudere il mapset una volta ultimate le modifiche;
+		\item [{\textsf{Aggiungi~vettoriale/raster~GRASS}}] queste due voci permettono di aggiungere, dopo aver selezionato la cartella grassdata, location e mapset, rispettivamente una carta vettoriale o raster ai layer visualizzati in QGIS;
+		\item [{C\textsf{rea~un~nuovo~vettoriale~GRASS}}] aggiunge nel mapset corrente un layer vettoriale, fornendo una vasta gamma di opzioni; a questa funzione si aggiunge l'analoga \textsf{Modifica~vettoriale~GRASS} nella voce immediatamente successiva.
+	\end{description}
+	
+	A queste funzioni di base per la gestione dei dati se ne aggiungono altre due, utili per focalizzare l'area di lavoro: \textsf{Visualizza~GRASS~region~attuale} una volta selezionato permette di centrare nella region attualmente selezionata i layer visualizzati all'interno di QGIS; la region può essere modificata selezionando \textsf{Modifica~GRASS~region~attuale}.
+
+\section{Avviare i moduli}
+	Considerato che tutte le funzioni di GRASS GIS fanno capo ai vari moduli, esiste nel plugin che integra le funzioni di GRASS in QGIS un'unica interfaccia per ricercare tutti i moduli, il \emph{GRASS Tools}, avviabile dal menù \textsf{$\text{Plugins}\rightarrow\text{GRASS}\rightarrow\text{Apri~Strumenti~GRASS}$}. Da questa finestra è possibile avviare qualsiasi modulo di GRASS, ed è articolata in tre schede:
+
+	\begin{description}
+		\item [{\textsf{Albero~moduli}}] elenca tutti i moduli di GRASS, raccolti in un albero che li organizza per tipologia di funzione;
+		\item [{\textsf{Lista~moduli}}] elenca tutti i moduli di GRASS in un semplice elenco; usando la casella di testo in basso è possibile scremare la lista per trovare velocemente il modulo desiderato; sia in questa scheda che nella precedente qualsiasi modulo è avviabile semplicemente con un doppio click sulla voce;
+		\item [{\textsf{Browser}}] offre tutte le funzioni di visualizzazione dell'albero delle carte all'interno del mapset corrente, corredate con informazioni dettagliate sulle singole mappe e funzioni di modifica/spostamento delle mappe all'interno del mapset.
+	\end{description}
+	
+	Dopo averlo avviato, l'interfaccia grafica ad ogni modulo presenta una struttura molto intuitiva, dalla quale è possibile accedere a tutte le funzioni che possono essere trovate in altre interfacce di GRASS, o accessibili direttamente dal terminale. Il terminale di GRASS, in caso ce ne sia necessità, può essere avviato dalla scheda \textsf{Albero~moduli}, ed è posizionata in cima alla lista, col nome di \textsf{shell~-~GRASS~shell}.
