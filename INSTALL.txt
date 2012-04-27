@@ -4,15 +4,8 @@ Un manuale collaborativo
 
 ## Installazione dipendenze
 
-	### Bazaar
-	
-	Bazaar è il sistema di versionamento del codice utilizzato per distribuire e gestire i
-	la scrittura collaborativa del manuale, sviluppato da Canonical L.t.d..
-	È possibile scaricarlo e installarlo per tutte le piattaforme seguendo le istruzioni
-	sul sito ufficiale:
-
-	http://wiki.bazaar.canonical.com/Download
-	
+	### GIT
+	sudo apt-get install git-core
 	
 	### TeXLive
 	
