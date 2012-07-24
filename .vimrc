@@ -1,5 +1,3 @@
-call pathogen#enable_plugin('latexsuite')
-
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
@@ -12,3 +10,6 @@ let g:tex_flavor='latex'
 
 " enable breakindent patch
 set breakindent
+
+" loads LaTeX-Suite_aka_Vim-LaTeX plugin
+call vam#ActivateAddons(["vimlatex"])
