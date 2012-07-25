@@ -12,4 +12,4 @@ let g:tex_flavor='latex'
 set breakindent
 
 " loads LaTeX-Suite_aka_Vim-LaTeX plugin
-call vam#ActivateAddons(["vimlatex"])
+call vam#ActivateAddons(["LaTeX-Suite_aka_Vim-LaTeX"], {"force_loading_plugins_now": 1})
