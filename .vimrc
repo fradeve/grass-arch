@@ -1,3 +1,6 @@
+" TODO
+" * get vimux support
+
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
@@ -12,4 +15,8 @@ let g:tex_flavor='latex'
 set breakindent
 
 " loads LaTeX-Suite_aka_Vim-LaTeX plugin
-call vam#ActivateAddons(["LaTeX-Suite_aka_Vim-LaTeX"], {"force_loading_plugins_now": 1})
+call vam#ActivateAddons(["LaTeX-Suite_aka_Vim-LaTeX", "vimux"], {"force_loading_plugins_now": 1})
+
+" vimux settings (requires vim-nox to run!)
+let g:VimuxOrientation = "v"
+let g:VimuxHeight = "20"
