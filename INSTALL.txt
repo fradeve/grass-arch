@@ -4,53 +4,54 @@ Un manuale collaborativo
 
 ## Installazione dipendenze
 
-	### GIT
-	sudo apt-get install git-core
-	
-	### TeXLive
-	
-	Per poter compilare corrrettamente il codice è indispensabile aver installato TeXLive 2011.
-	Le istruzioni per l'installazione sulle varie piattaforme sono disponibili sul sito della
-	distribuzione:
+### GIT
 
-	https://www.tug.org/texlive/quickinstall.html
+    sudo apt-get install git-core
 
-	L'utilizzo di pacchetti aggiuntivi rispetto alla distribuzione standard è indispensabile
-	per la compilazione. I pacchetti necessari sono:
+### TeXLive
 
-	* inputenc
-	* babel
-	* color
-	* graphics
-	* graphicx
-	* subfig
-	* wrapfig
-	* sidecap
-	* tikz
-	* textcomp
-	* amsmath
-	* amssymb
-	* upgreek
-	* SIunits
-	* xfrac
-	* xy
-	* multicol
-	* framed
-	* fancybox
-	* fancyvrb
-	* geometry
-	* multirow
-	* booktabs
-	* array
-	* ulem
-	* fancyhdr
-	* dirtree
-	* epigraph
-	* hyperref
-	* listings
-	* setspace
-	* eso-pic
-	
-	è possibile installarli in un unico comando:
-	
-	tlmgr install inputenc babel color graphics graphicx subfig wrapfig sidecap tikz textcomp amsmath amssymb upgreek SIunits xfrac xy multicol framed fancybox fancyvrb geometry multirow booktabs array ulem fancyhdr dirtree epigraph hyperref listings setspace eso-pic
+Per poter compilare corrrettamente il codice è indispensabile aver installato TeXLive 2011.
+Le istruzioni per l'installazione sulle varie piattaforme sono disponibili sul sito della
+distribuzione:
+
+https://www.tug.org/texlive/quickinstall.html
+
+L'utilizzo di pacchetti aggiuntivi rispetto alla distribuzione standard è indispensabile
+per la compilazione. I pacchetti necessari sono:
+
+* inputenc
+* babel
+* color
+* graphics
+* graphicx
+* subfig
+* wrapfig
+* sidecap
+* tikz
+* textcomp
+* amsmath
+* amssymb
+* upgreek
+* SIunits
+* xfrac
+* xy
+* multicol
+* framed
+* fancybox
+* fancyvrb
+* geometry
+* multirow
+* booktabs
+* array
+* ulem
+* fancyhdr
+* dirtree
+* epigraph
+* hyperref
+* listings
+* setspace
+* eso-pic
+
+è possibile installarli in un unico comando:
+
+    tlmgr install inputenc babel color graphics graphicx subfig wrapfig sidecap tikz textcomp amsmath amssymb upgreek SIunits xfrac xy multicol framed fancybox fancyvrb geometry multirow booktabs array ulem fancyhdr dirtree epigraph hyperref listings setspace eso-pic
